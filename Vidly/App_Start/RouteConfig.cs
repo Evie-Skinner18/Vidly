@@ -13,14 +13,9 @@ namespace Vidly
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            // define routes from the most specific to the most generic
-            // custom route for release date
-            routes.MapRoute(
-                "MoviesByReleaseDate",
-                "movies/released/{year}/{month}",
-                new { controller = "Movies", action = "ByReleaseDate" },
-                // REGEX: year must be a four digit string and month a two digit string
-                new { year = @"\d{4}", month = @"\d{2}"});
+            // define custom routes using attributes instead of hard coded strings
+            routes.MapMvcAttributeRoutes();
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

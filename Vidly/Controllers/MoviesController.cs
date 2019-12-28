@@ -7,8 +7,11 @@ namespace Vidly.Controllers
     {
         public ActionResult Random()
         {
+            // pass movie object to the view using ViewDataDctionary
             var shrek = new Movie() { Name = "Shrek" };
-            return View(shrek);
+
+            ViewData["Movie"] = shrek;
+            return View();
         }
 
         // /movies GET all movies
@@ -30,6 +33,9 @@ namespace Vidly.Controllers
             return Content($"<h1>Id = {id} </h1>");
         }
 
+        // using route attribute pass in dynamic url template
+        // pass in regex that limits year to 4 digit sring and one that limits month to 2 digit string between 1 and 12
+        [Route("movies/released/{year:regex(\\d{4})}/{month:regex(\\d{2}):range(1, 12)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content($"{year}/{month}");
