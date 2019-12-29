@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using Vidly.Models;
 
 namespace Vidly.Controllers
@@ -10,7 +11,20 @@ namespace Vidly.Controllers
             // do not use ViewData or ViewBag
             // pass movie object to the view
             var shrek = new Movie() { Name = "Shrek" };
-            //viewResult.ViewData.Model
+            var customers = new List<Customer>()
+            {
+                new Customer()
+                {
+                    Name = "Mr Edmund Blackadder",
+                    Id = 1
+                },
+                new Customer()
+                {
+                    Name = "Mr S. Baldrick",
+                    Id = 2
+                }
+            };
+
             return View(shrek);
         }
 
