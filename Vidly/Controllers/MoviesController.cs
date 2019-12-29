@@ -7,11 +7,11 @@ namespace Vidly.Controllers
     {
         public ActionResult Random()
         {
-            // pass movie object to the view using ViewDataDctionary
+            // do not use ViewData or ViewBag
+            // pass movie object to the view
             var shrek = new Movie() { Name = "Shrek" };
-
-            ViewData["Movie"] = shrek;
-            return View();
+            //viewResult.ViewData.Model
+            return View(shrek);
         }
 
         // /movies GET all movies
