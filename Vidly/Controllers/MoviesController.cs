@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Vidly.Models;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -9,8 +10,9 @@ namespace Vidly.Controllers
         public ActionResult Random()
         {
             // do not use ViewData or ViewBag
-            // pass movie object to the view
+            // pass movie object and list of customer objets to the view model
             var shrek = new Movie() { Name = "Shrek" };
+
             var customers = new List<Customer>()
             {
                 new Customer()
@@ -25,7 +27,14 @@ namespace Vidly.Controllers
                 }
             };
 
-            return View(shrek);
+            var randomViewModel = new RandomMovieViewModel
+            {
+                Movie = shrek,
+                Customers = customers
+            };
+
+
+            return View(randomViewModel);
         }
 
         // /movies GET all movies
