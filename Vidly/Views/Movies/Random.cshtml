@@ -6,7 +6,14 @@
 }
 
 <h2>@Model.Movie.Name</h2>
-<h3>@Model.Customers[0].Name</h3>
-<h3>@Model.Customers[1].Name</h3>
+@*<h3>@Model.Customers[0].Name</h3>
+<h3>@Model.Customers[1].Name</h3>*@
+
+@{ 
+    foreach (var customer in @Model.Customers)
+    {
+        <h3>customer.Name</h3>
+    }
+}
 
 
